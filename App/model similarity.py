@@ -19,7 +19,7 @@ df = pd.read_excel(os.path.join(directory_path, path))
 # Load your model with custom layer
 with keras.utils.custom_object_scope({'MedBERTEmbeddingLayer': MedBERTEmbeddingLayer}):
     # model = tf.keras.models.load_model('./model.keras')
-    model = keras.models.load_model('contoh_model.keras', custom_objects={'MedBERTEmbeddingLayer': MedBERTEmbeddingLayer})
+    model = keras.models.load_model('model.keras', custom_objects={'MedBERTEmbeddingLayer': MedBERTEmbeddingLayer})
 
 
 
@@ -39,9 +39,9 @@ user_input = str(input('Masukkan Keluhan : '))
 input_ids, attention_mask = encode_text(tokenizer, user_input, 128)
 predictions = model.predict({'input_ids': input_ids, 'attention_mask': attention_mask})
 max_index = np.argmax(predictions)
-if (max_index==0):
-  category = 'Respiratory siseases'
-elif(max_index==1):
+if (max_index==1):
+  category = 'Respiratory diseases'
+elif(max_index==2):
   category = 'Skin diseases'
 else:
   category = 'Gastrointestinal diseases'

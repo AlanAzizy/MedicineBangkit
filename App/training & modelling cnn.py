@@ -15,12 +15,18 @@ from function import preprocess_texts, plot_training_history
 import pandas as pd
 df = pd.read_excel('./training_data.xlsx',0)
 
-#Prepare Data
+floatLabel = []
+for i in df['Category']:
+    if (i=='Respiratory diseases'):
+        floatLabel.append(0)
+    elif(i=='Skin disease'):
+        floatLabel.append(1)
+    else:
+        floatLabel.append(2)
+
 df = df.groupby('Category').apply(lambda x: x.sample(n=970, random_state=4)).reset_index(drop=True)
 
 #Labelling
-floatLabel = df.pop('Category')
-
 if __name__ == "__main__":
     model = create_text_classification_model()
     opt = keras.optimizers.Adam(learning_rate=0.00005)
@@ -32,7 +38,9 @@ if __name__ == "__main__":
 
     #  Encode labels
     label_encoder = LabelEncoder()
-    encoded_labels = label_encoder.fit_transform(floatLabel)
+    encoded_labels = label_encoder.fit_transform(df['Category'])
+    print(df['Category'])
+    print(encoded_labels)
 
     # Split the dataset into training and validation sets
     train_texts, val_texts, train_labels, val_labels = train_test_split(input_texts, encoded_labels, test_size=0.3, random_state=42)
@@ -54,5 +62,5 @@ if __name__ == "__main__":
 
     plot_training_history(history)
 
-    model.save('model.h5')
-    model.save('model.keras')
+    model.save('/model/model.h5')
+    model.save('/model/model.keras')
