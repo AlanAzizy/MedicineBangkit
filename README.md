@@ -23,6 +23,7 @@
 - install all dependency with `pip install -r requirements.txt`
 - Prepores data with running `python 'App/preprocessing.py'`
 - Train model with running `python 'App/modelling & training cnn.py'`
+- Wait until the training process is finished
 - Run Model with `uvicorn 'App.main:app' --host 0.0.0.0 --port 8000'
 - Open browser and insert `0.0.0.0:8000/docs` in your browser bar or `127.0.0.1:8000/docs`
 - Open the predict tab
