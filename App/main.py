@@ -6,20 +6,23 @@ from transformers import AutoTokenizer
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from keras.models import load_model
-from function import preprocess_texts
-from cnn_model import MedBERTEmbeddingLayer, encode_text
-from similar_model import get_similar_text
+from App.function import preprocess_texts
+from App.cnn_model import MedBERTEmbeddingLayer, encode_text
+from App.similar_model import get_similar_text
 
 app = FastAPI()
 
 # Load Data
-path = 'training_data.xlsx'
+path = './App/training_data.xlsx'
 directory_path = os.getcwd()
 df = pd.read_excel(os.path.join(directory_path, path))
 
+model_path = './model/model.keras'
+print(os.path.join(directory_path, model_path))
+
 # Load your model with custom layer
 with tf.keras.utils.custom_object_scope({'MedBERTEmbeddingLayer': MedBERTEmbeddingLayer}):
-    model = load_model('model.keras', custom_objects={'MedBERTEmbeddingLayer': MedBERTEmbeddingLayer})
+    model = load_model(os.path.join(directory_path, model_path), custom_objects={'MedBERTEmbeddingLayer': MedBERTEmbeddingLayer})
 
 # Tokenizer
 tokenizer = AutoTokenizer.from_pretrained('emilyalsentzer/Bio_ClinicalBERT')

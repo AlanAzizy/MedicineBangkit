@@ -1,5 +1,5 @@
-from cnn_model import encode_text, decode_single_text
-from function import standardize_output
+from App.cnn_model import encode_text, decode_single_text
+from App.function import standardize_output
 import tensorflow as tf
 
 def get_similar_text(user_input, tokenizer, train_input_ids, embedding_matrix):

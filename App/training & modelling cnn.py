@@ -9,11 +9,11 @@ from tensorflow import keras
 import numpy as np
 from cnn_model import create_text_classification_model, Callback
 from function import preprocess_texts, plot_training_history
-
+import errno
 
 # Load Data
 import pandas as pd
-df = pd.read_excel('./training_data.xlsx',0)
+df = pd.read_excel('./App/training_data.xlsx',0)
 
 floatLabel = []
 for i in df['Category']:
@@ -61,6 +61,11 @@ if __name__ == "__main__":
     history = model.fit(train_dataset, epochs=100, validation_data=val_dataset, callbacks=[reduce_lr, callback])
 
     plot_training_history(history)
-
-    model.save('/model/model.h5')
-    model.save('/model/model.keras')
+    try:
+        model.save('/model/model.h5')
+        model.save('/model/model.keras')
+    except OSError as e:
+        if e.errno == errno.EEXIST:
+            print('Training file is not created.')
+        else:
+            raise

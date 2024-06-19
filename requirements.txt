@@ -7,3 +7,6 @@ openpyxl
 tf-keras
 numpy
 scikit-learn
+uvicorn==0.20.0
+fastapi
+pydantic

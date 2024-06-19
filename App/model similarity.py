@@ -2,14 +2,14 @@ import tensorflow as tf
 from transformers import AutoTokenizer
 import numpy as np
 import keras
-from function import preprocess_texts
-from cnn_model import MedBERTEmbeddingLayer, encode_text, decode_single_text
-from similar_model import get_similar_text
+from App.function import preprocess_texts
+from App.cnn_model import MedBERTEmbeddingLayer, encode_text, decode_single_text
+from App.similar_model import get_similar_text
 import os
 import pandas as pd
 
 # Load Data
-path = 'training_data.xlsx'
+path = 'App/training_data.xlsx'
 directory_path = os.getcwd()
 df = pd.read_excel(os.path.join(directory_path, path))
 

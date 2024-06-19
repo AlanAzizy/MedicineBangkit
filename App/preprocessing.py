@@ -3,11 +3,13 @@ from function import standardize_output, split_row_by_column
 
 
 #Load Data
-df_1 = pd.read_excel('./Medicine_Data.xlsx',0)
-df_2 = pd.read_excel('./Medicine_Data.xlsx',1)
-df_3 = pd.read_excel('./Medicine_Data.xlsx',2)
+df_1 = pd.read_excel('./App/Medicine_Data.xlsx',0)
+df_2 = pd.read_excel('./App/Medicine_Data.xlsx',1)
+df_3 = pd.read_excel('./App/Medicine_Data.xlsx',2)
 df = pd.concat([df_1,df_2,df_3])
 
+df['Summary'] = df['Summary'].astype('str')
+df['Category'] = df['Category'].astype('str')
 
 #Data Cleaning
 word_1 = 'Global:'
@@ -35,11 +37,7 @@ df1 = df1[df1['Category'].isin(drugNameFiltered)]
 print(df1['Category'].unique())
 df1 = df1.loc[df1['Category'].isin(['Respiratory diseases', 'Skin diseases', 'Gastrointestinal diseases'])]
 
-df1['Summary'] = df1['Summary'].astype('str')
-df1['Category'] = df1['Category'].astype('str')
-
-
 #Save Data
-filename = 'training_data.xlsx'
+filename = './App/training_data.xlsx'
 df1.to_excel(filename, index=False)
 

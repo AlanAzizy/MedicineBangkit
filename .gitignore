@@ -1,2 +1,4 @@
 /myenv/Lib/site-packages/
+/App/model.h5
+/App/model.keras
 /model/
