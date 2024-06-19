@@ -3,6 +3,7 @@
 ## How to use
 
 ### Using Trained Model
+- Open Your Docker desktop
 - Go to [DockerHub Image](https://hub.docker.com/r/alansti/medicine)
 - Copy pull command or `docker pull alansti/medicine`
 - Open a terminal inside directory you want to save project
