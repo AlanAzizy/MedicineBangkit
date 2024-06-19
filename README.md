@@ -1,5 +1,13 @@
 # VoiceHealth Guide
 
+this project is provided by bangkit capstone team C241-PS524
+1. Dzakirozaan Uzlahwasata - Cloud Computing - Institut Teknologi Sepuluh November
+2. Wisnuyasha Faizal - Cloud Computing - Institut Teknologi Sepuluh November
+3. Fadhlan Nazhif Azizy - Machine Learning - Institut Teknologi Bandung
+4. Imam Rusydi Ibrahim - Machine Learning - Institut Teknologi Bandung
+5. Agung Muhammad Sholeh - Machine Learning - Universitas Brawijaya
+6. Aloysius Bataona Manullang - Mobile Development - Institut Teknologi Sepuluh November
+
 ## How to use
 
 ### Using Trained Model
